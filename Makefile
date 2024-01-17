@@ -1,3 +1,3 @@
 run-mac:
-	@echo "Starting MAC (Mongosaurus Cheat Engine) example 🔩"
+	@echo "MAC (Mongosaurus Anti Cheat) example 🔩"
 	@python main.py

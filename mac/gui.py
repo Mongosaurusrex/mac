@@ -3,6 +3,7 @@ from typing import List, Tuple, Union, Dict
 import numpy as np
 import time
 import matplotlib.pyplot as plt
+from mplcursors import cursor
 
 from mac.agent import Agent
 
@@ -10,12 +11,18 @@ from mac.agent import Agent
 def collect_info() -> Tuple[List[Agent], int]:
     print("Before we start we need to setup the test")
     number_of_agents = int(input("How many agents are we going to have? "))
-    agents = []
-    for _ in range(number_of_agents):
-        agent = Agent()
-        agents.append(agent)
+    print(f"Ok, we will use {number_of_agents} agents 🤖")
+    number_of_cheaters = int(input("How many cheating agents are we going to have? "))
+    print(f"Ok, we will have {number_of_agents} cheating agents 😈")
 
-    print(f"Ok, we will use {len(agents)} agents 🤖")
+    agents = []
+
+    for created_amount in range(number_of_agents):
+        if created_amount < number_of_cheaters:
+            agent = Agent(winning_probability=0.6, is_cheater=True)
+        else:
+            agent = Agent()
+        agents.append(agent)
 
     num_of_iterations = int(input("How many iterations do you want to run? "))
 

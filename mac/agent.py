@@ -10,9 +10,12 @@ class AgentHistory:
 
 
 class Agent:
-    def __init__(self, winning_probability: float = 0.5):
+    def __init__(self, winning_probability: float = 0.5, is_cheater: bool = False):
+        if is_cheater:
+            winning_probability = winning_probability + 0.1
         self.winning_probability = winning_probability
         self.loosing_probability = 1 - winning_probability
+        self.is_cheater = is_cheater
         self.history: List[AgentHistory] = []
         self.wins = 0
 
