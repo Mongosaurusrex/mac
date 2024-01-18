@@ -13,13 +13,13 @@ def collect_info() -> Tuple[List[Agent], int]:
     number_of_agents = int(input("How many agents are we going to have? "))
     print(f"Ok, we will use {number_of_agents} agents 🤖")
     number_of_cheaters = int(input("How many cheating agents are we going to have? "))
-    print(f"Ok, we will have {number_of_agents} cheating agents 😈")
+    print(f"Ok, we will have {number_of_cheaters} cheating agents 😈")
 
     agents = []
 
     for created_amount in range(number_of_agents):
         if created_amount < number_of_cheaters:
-            agent = Agent(winning_probability=0.6, is_cheater=True)
+            agent = Agent(is_cheater=True)
         else:
             agent = Agent()
         agents.append(agent)
@@ -31,8 +31,9 @@ def collect_info() -> Tuple[List[Agent], int]:
     return agents, num_of_iterations
 
 
-def show_results(result: Dict, statistic_data: Dict) -> None:
+def show_graph_results(result: Dict, statistic_data: Dict) -> None:
     print("Presenting suite results... 📈")
+
     fig, (ax1, ax2) = plt.subplots(1, 2)
 
     ax1.bar(result["categories"], result["data"])
@@ -43,5 +44,9 @@ def show_results(result: Dict, statistic_data: Dict) -> None:
     ax2.set_title("Binomial distribution")
     ax2.set_xlabel("Wins")
     ax2.set_ylabel("Probability")
-
+    cursor(hover=True)
     plt.show()
+
+
+def show_table_results() -> None:
+    pass

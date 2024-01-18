@@ -47,3 +47,8 @@ $$
 \sum_{i=0}^{[k]}\binom{k}{i}p_r^i(1-p_r)^{k-i}
 $$
 
+### Benchmark
+
+The goals of this engine are:
+* Accuse less than 5% of fair players
+* Catch more than 80% of the cheaters

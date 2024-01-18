@@ -11,18 +11,17 @@ class AgentHistory:
 
 class Agent:
     def __init__(self, winning_probability: float = 0.5, is_cheater: bool = False):
-        if is_cheater:
-            winning_probability = winning_probability + 0.1
-        self.winning_probability = winning_probability
-        self.loosing_probability = 1 - winning_probability
         self.is_cheater = is_cheater
+        self.winning_probability = winning_probability
+        if self.is_cheater:
+            self.winning_probability = self.winning_probability + 0.2
+        self.loosing_probability = 1 - self.winning_probability
         self.history: List[AgentHistory] = []
         self.wins = 0
 
     def play(self) -> None:
         random_number = random.random()
-
-        if random_number >= self.winning_probability:
+        if random_number >= self.loosing_probability:
             self.history.append(AgentHistory(win=True, outcome=random_number))
             self.wins += 1
         else:
